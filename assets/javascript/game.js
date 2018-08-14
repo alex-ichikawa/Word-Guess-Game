@@ -1,5 +1,5 @@
 // Game variables
-const words = ['ayrton senna', 'ferrari', 'sebastian vettel', 'mclaren', 'williams', 'honda', 'monaco', 'red bull', 'adrian newey', 'fernando alonso', 'kamui kobayashi'];
+const words = ['ayrton senna', 'ferrari', 'sebastian vettel', 'mclaren', 'williams', 'honda', 'monaco', 'red bull', 'adrian newey', 'fernando alonso', 'kamui kobayashi', 'jenson button', 'kimi raikkonen', 'eau rouge'];
 let wins = 0;
 let losses = 0;
 let wrong = [];
@@ -10,6 +10,8 @@ let chosenWord;
 let winCounter = 0;
 let usedLetters = [];
 let spaceCounter = 0;
+let winSound = document.getElementById('worldChamp');
+let loseSound = document.getElementById('pingPong');
 
 function startGame () {
 
@@ -52,10 +54,12 @@ function winLose() {
     if (winCounter === chosenWord.length - spaceCounter) {
         document.getElementById('under').innerHTML = chosenWord;
         wins++;
+        winSound.play();
         alert(`You won! The word was ${chosenWord}`);
         reset();
     }
     else if (tries === 0) {
+        loseSound.play();
         alert('Loser');
         losses++;
         reset();
